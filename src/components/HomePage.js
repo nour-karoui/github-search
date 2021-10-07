@@ -57,7 +57,7 @@ function HomePage() {
     }
 
     const filter = (repositoryName) => {
-        const filtered = repositories.filter((repository) => repository.name.includes(repositoryName));
+        const filtered = repositories.filter((repository) => repository.name.toLowerCase().includes(repositoryName.toLowerCase()));
         setFilteredRepositories(() => [...filtered]);
     }
 
