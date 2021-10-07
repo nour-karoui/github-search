@@ -11,11 +11,7 @@ function App() {
     <div>
         <BrowserRouter>
             <Switch>
-                {/** Repositories route **/}
                 <Route path='/' component={HomePage}/>
-
-                {/** Main page ( where the user can make his search ) **/}
-                {/*<Route exact path='/' component={Home}/>*/}
             </Switch>
         </BrowserRouter>
     </div>
