@@ -17,7 +17,11 @@ function HomePage() {
     const [filteredRepositories, setFilteredRepositories] = useState([]);
 
     const history = useHistory();
-
+    /**
+     * This Hook Component loop over the repositories and displays them
+     * @return {JSX.Element}
+     * @constructor
+     */
     const Repositories = () => {
         return (
             <div className={'repos-wrapper'}>
@@ -28,16 +32,11 @@ function HomePage() {
         )
     }
 
-    const calculateStars = (repositories) => {
-        let stars = 0;
-        repositories.map(repo => {
-            stars += repo.stargazers_count;
-            console.log(repo.stargazers_count);
-        })
-        console.log(stars);
-        return stars;
-    }
-
+    /***
+     * This hook component displays the user details
+     * @return {JSX.Element}
+     * @constructor
+     */
     const UserDetails = () => {
         return (
             <div className={'user-details-wrapper flex-row flex-lg-column mx-3'}>
@@ -56,11 +55,33 @@ function HomePage() {
         );
     }
 
+    /**
+     * function that loop over the repositories and sums the number of stars in order to get the total star number
+     * @param repositories : [Repository]
+     * @return {number}
+     */
+    const calculateStars = (repositories) => {
+        let stars = 0;
+        repositories.map(repo => {
+            stars += repo.stargazers_count;
+            console.log(repo.stargazers_count);
+        })
+        console.log(stars);
+        return stars;
+    }
+
+    /**
+     * function that filters the repositories by their name
+     * @param repositoryName : string
+     */
     const filter = (repositoryName) => {
         const filtered = repositories.filter((repository) => repository.name.toLowerCase().includes(repositoryName.toLowerCase()));
         setFilteredRepositories(() => [...filtered]);
     }
 
+    /**
+     * Fetch user from the github API by username
+     */
     const getUserByUsername = () => {
         axios
             .get('https://api.github.com/users/' + userName)
@@ -74,6 +95,9 @@ function HomePage() {
             });
     }
 
+    /**
+     * Fetch user repositories from the github API by username
+     */
     const getRepositoriesByUsername = () => {
         setIsLoading(true);
         axios
