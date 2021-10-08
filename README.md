@@ -20,6 +20,8 @@
 
 ### 🏠 [Homepage](https://github.com/nour-karoui/github-search)
 
+## Description
+This project allows you to fetch a github user and their repositories and then filter repositories by the name
 
 ## Install
 
@@ -31,9 +33,27 @@ npm install
 
 ## Running the project
 
+```shell script
 npm start
+```
+*Or simply visit https://github-search-functionality.netlify.app/*
 
-## Realised Work
+## Testing the project
+```shell script
+npm run test
+```
+
+## Future improvements
+- add Pagination for fetching repos.
+- Get repos by organization name.
+- Filter fetched repositories by main language, description, stars, forks.
+- Get repository languages and filter by languages.
+- Get repository tags and filter by tag.
+
+## Feedback about this exercise
+- During this challenge I implemented unit testing for react app for the first time.
+- I had the chance to work with Github API.
+- To make it more challenging, this exercise could've had the option of login with github and allowing the user to create new repos or delete repos.
 
 
 

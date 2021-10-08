@@ -24,7 +24,7 @@ function HomePage() {
      */
     const Repositories = () => {
         return (
-            <div className={'repos-wrapper'}>
+            <div data-testid='repositories' className={'repos-wrapper'}>
                 {filteredRepositories.map(repository => <RepositoryDetail key={repository.id}
                                                                           repository={repository}/>)}
                 {!filteredRepositories.length ? <div>There are no repositories</div> : null}
@@ -42,7 +42,7 @@ function HomePage() {
             <div className={'user-details-wrapper flex-row flex-lg-column mx-3'}>
                 <img className={'user-photo my-1'} src={githubUser.avatar_url} alt=""/>
                 <div className={'d-flex flex-column align-items-center'}>
-                    <div className={'my-1 home-title fw-bold'}>{githubUser.name}</div>
+                    <div data-testid='username' className={'my-1 home-title fw-bold'}>{githubUser.name}</div>
                     <div className={'my-1 fw-bold'}>{githubUser.bio}</div>
                     <hr className={' hr hr-static'}/>
                     <div className={'my-1 fw-bold mx-1'}> <FontAwesomeIcon icon={faUsers} /> {githubUser.followers} Followers</div>
@@ -114,7 +114,7 @@ function HomePage() {
     }
 
     return (
-        <div className={'my-4'}>
+        <div data-testid='home-page' className={'my-4'}>
             <div className={'home-wrapper'}>
                 <div className={'home-body d-lg-flex my-1'}>
                     {!userFetched ?
@@ -129,16 +129,16 @@ function HomePage() {
                                 </g>
                             </svg>
 
-                            <div className={'text-center fw-bold mt-4 home-title'}>Github Repositories Search</div>
+                            <div data-testid='search-label' className={'text-center fw-bold mt-4 home-title'}>Github Repositories Search</div>
                         </div> : null}
                     {!userFetched ? <div className={'vertical-bar d-md-none'}/> : null}
                     <div className={userFetched ? ' home-input-wrapper-fetched' : 'home-input-wrapper'}>
                         {!userFetched ? <div className={'home-subtitle my-1'}>Please enter your username to show the repositories</div> : null}
 
-                        <input className={'input w-100'} type="text"
+                        <input className={'input w-100'} data-testid='input' type="text"
                                onChange={(event) => setUserName(event.target.value)}
                                placeholder='username'/>
-                        <button className={'button mx-2'} onClick={() => {
+                        <button data-testid='search-button' className={'button mx-2'} onClick={() => {
                             getUserByUsername();
                             getRepositoriesByUsername()
                         }}> Search
@@ -153,7 +153,7 @@ function HomePage() {
                         <input className={'input w-75'} type="text" onChange={(event) => filter(event.target.value)}
                                placeholder={'Enter your repository name'}/>
                         <div className={'d-flex flex-lg-row flex-md-column flex-column w-100 mt-3 px-3'}>
-                            <UserDetails/>
+                            <UserDetails data-testid='user-detail' />
                             <Repositories githubUser={githubUser} repositories={repositories}/>
 
                         </div>
